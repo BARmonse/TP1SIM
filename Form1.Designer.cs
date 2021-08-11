@@ -51,6 +51,7 @@ namespace NumerosAleatorios
             this.button1 = new System.Windows.Forms.Button();
             this.grdResultados = new System.Windows.Forms.DataGridView();
             this.btnAgregar = new System.Windows.Forms.Button();
+            this.btnListar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdResultados)).BeginInit();
@@ -255,9 +256,15 @@ namespace NumerosAleatorios
             // 
             // grdResultados
             // 
+            this.grdResultados.AllowUserToAddRows = false;
+            this.grdResultados.AllowUserToDeleteRows = false;
+            this.grdResultados.AllowUserToResizeColumns = false;
+            this.grdResultados.AllowUserToResizeRows = false;
+            this.grdResultados.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.grdResultados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdResultados.Location = new System.Drawing.Point(654, 185);
             this.grdResultados.Name = "grdResultados";
+            this.grdResultados.ReadOnly = true;
             this.grdResultados.RowTemplate.Height = 25;
             this.grdResultados.Size = new System.Drawing.Size(296, 212);
             this.grdResultados.TabIndex = 4;
@@ -273,11 +280,23 @@ namespace NumerosAleatorios
             this.btnAgregar.UseVisualStyleBackColor = true;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
+            // btnListar
+            // 
+            this.btnListar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnListar.Location = new System.Drawing.Point(785, 403);
+            this.btnListar.Name = "btnListar";
+            this.btnListar.Size = new System.Drawing.Size(165, 33);
+            this.btnListar.TabIndex = 6;
+            this.btnListar.Text = "Listar hasta el final";
+            this.btnListar.UseVisualStyleBackColor = true;
+            this.btnListar.Click += new System.EventHandler(this.btnListar_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 461);
+            this.Controls.Add(this.btnListar);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.grdResultados);
             this.Controls.Add(this.button1);
@@ -322,6 +341,7 @@ namespace NumerosAleatorios
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView grdResultados;
         private System.Windows.Forms.Button btnAgregar;
+        private System.Windows.Forms.Button btnListar;
     }
 }
 

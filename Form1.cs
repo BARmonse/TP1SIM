@@ -21,8 +21,10 @@ namespace NumerosAleatorios
         int g;
         int m;
         int c;
-        int indice;
-
+    
+        int mostrarDesde;
+        int mostrarHasta;
+        DataTable temp;
         DataTable dt;
         DataRow dr;
         Truncador truncador;
@@ -53,7 +55,9 @@ namespace NumerosAleatorios
             a = int.Parse(txtA.Text);
             m = int.Parse(txtM.Text);
             cantidad = int.Parse(txtCantidad.Text);
-            indice = cantidad - 1;
+     
+            mostrarDesde = 0;
+            mostrarHasta = 20;
 
             if (rbMixto.Checked)
             {
@@ -68,14 +72,18 @@ namespace NumerosAleatorios
         {
             generador = new GeneradorCongruencialMixto(dt, truncador, semilla, c, a, m);
             generador.generarSerie(cantidad);
-            grdResultados.DataSource = dt;
+            temp = new DataTable();
+            temp = dt.AsEnumerable().Where((row, index) => index >= mostrarDesde && index < mostrarHasta).CopyToDataTable();
+            grdResultados.DataSource = temp;
         }
 
         private void congruencialMultiplicativo()
         {
             generador = new GeneradorCongruencialMultiplicativo(dt, truncador, semilla, a, m);
             generador.generarSerie(cantidad);
-            grdResultados.DataSource = dt;
+            temp = new DataTable();
+            temp = dt.AsEnumerable().Where((row, index) => index >= mostrarDesde && index <= mostrarHasta).CopyToDataTable();
+            grdResultados.DataSource = temp;
         }
 
         private void txtK_KeyDown(object sender, KeyEventArgs e)
@@ -191,27 +199,35 @@ namespace NumerosAleatorios
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            agregarFilas(20);
-        }
-        private void agregarFilas(int cantidad)
-        {
-            for (int i=0;i < cantidad; i++)
+            mostrarDesde = mostrarHasta;
+            mostrarHasta += 20;
+            if (mostrarHasta > dt.Rows.Count)
             {
-                agregarFila(generador.siguienteAleatorio());
+                mostrarHasta = dt.Rows.Count;
             }
-        }
-        private void agregarFila(double aleatorio)
-        {
-            ++indice;
-            dr = dt.NewRow();
-            dr[0] = indice + 1;
-            dr[1] = aleatorio;
-            dt.Rows.Add(dr);
+            
+            for (int i=mostrarDesde;i < mostrarHasta; i++)
+            {
+                DataRow row = temp.NewRow();
+                for (int j=0; j < temp.Columns.Count; j++)
+                {
+                    row[j] = dt.Rows[i][j];
+                }
+                temp.Rows.Add(row);
+            }
             enfocarFila();
         }
+
         private void enfocarFila()
         {
-            grdResultados.CurrentCell = grdResultados.Rows[indice].Cells[0];
+            grdResultados.CurrentCell = grdResultados.Rows[temp.Rows.Count-1].Cells[0];
+        }
+
+        private void btnListar_Click(object sender, EventArgs e)
+        {
+            grdResultados.DataSource = null;
+            grdResultados.DataSource = dt;
+            grdResultados.CurrentCell = grdResultados.Rows[dt.Rows.Count - 1].Cells[0];
         }
     }
 }
