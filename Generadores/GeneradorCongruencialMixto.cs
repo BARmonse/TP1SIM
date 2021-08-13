@@ -36,6 +36,11 @@ namespace NumerosAleatorios.Generadores
         }
         public DataTable generarSerie(int cantidadAleatorios)
         {
+            return this.generarSerie(cantidadAleatorios, null);
+        }
+
+        public DataTable generarSerie(int cantidadAleatorios, ContadorFrecuenciaObservada frecuenciaObservada)
+        {
             dataTable.Rows.Clear();
 
             for (int i = 0; i < cantidadAleatorios; i++)
@@ -45,6 +50,8 @@ namespace NumerosAleatorios.Generadores
                 dataRow[0] = i + 1;
                 dataRow[1] = aleatorio;
                 dataTable.Rows.Add(dataRow);
+
+                if (frecuenciaObservada != null) { frecuenciaObservada.contarNumero(aleatorio); }
             }
             return dataTable;
         }

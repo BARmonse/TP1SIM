@@ -8,31 +8,31 @@ using System.Threading.Tasks;
 
 namespace NumerosAleatorios.Generadores
 {
-    class GeneradorCongruencialMultiplicativo : IGenerador
+    class GeneradorLenguaje : IGenerador
     {
-        private Truncador truncador;
+        Random random;
+        Truncador truncador;
         private DataTable dataTable;
         private DataRow dataRow;
 
-        private long entradaAnterior;
-        private long entradaActual;
-        private double aleatorioActual;
-
         private double aleatorio;
 
-        // parametros
-        private int c;
-        private int a;
-        private long m;
-
-        public GeneradorCongruencialMultiplicativo(DataTable tabla, Truncador truncador, long semilla, int a, long m)
+        public GeneradorLenguaje(DataTable tabla, Truncador truncador)
         {
-            this.entradaAnterior = semilla;
+            this.random = new Random();
             this.truncador = truncador;
-            this.a = a;
-            this.m = m;
-
             this.dataTable = tabla;
+        }
+
+        public GeneradorLenguaje(Truncador truncador)
+        {
+            this.truncador = truncador;
+            this.random = new Random();
+        }
+
+        public double siguienteAleatorio()
+        {
+            return truncador.truncar(random.NextDouble());
         }
 
         public DataTable generarSerie(int cantidadAleatorios)
@@ -55,14 +55,6 @@ namespace NumerosAleatorios.Generadores
                 if (frecuenciaObservada != null) { frecuenciaObservada.contarNumero(aleatorio); }
             }
             return dataTable;
-        }
-
-        public double siguienteAleatorio()
-        {
-            entradaActual = (a * entradaAnterior) % (m);
-            aleatorioActual = (double)entradaActual / (m); // (m-1) para incluir el 1 
-            entradaAnterior = entradaActual;
-            return truncador.truncar(aleatorioActual);
         }
     }
 }

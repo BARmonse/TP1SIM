@@ -1,7 +1,7 @@
 ﻿
 namespace NumerosAleatorios
 {
-    partial class Form1
+    partial class PantallaGeneradores
     {
         /// <summary>
         ///  Required designer variable.

@@ -12,7 +12,7 @@ using NumerosAleatorios.Generadores;
 
 namespace NumerosAleatorios
 {
-    public partial class Form1 : Form
+    public partial class PantallaGeneradores : Form
     {
         int cantidad;
         int semilla;
@@ -30,7 +30,7 @@ namespace NumerosAleatorios
         Truncador truncador;
         IGenerador generador;
 
-        public Form1()
+        public PantallaGeneradores()
         {
             InitializeComponent();
         }
