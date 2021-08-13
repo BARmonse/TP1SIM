@@ -39,7 +39,7 @@ namespace NumerosAleatorios.Graficador
             // 
             this.pictureBox1.Location = new System.Drawing.Point(213, 12);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(575, 354);
+            this.pictureBox1.Size = new System.Drawing.Size(575, 430);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
@@ -54,14 +54,14 @@ namespace NumerosAleatorios.Graficador
             this.grdFrecuencias.Name = "grdFrecuencias";
             this.grdFrecuencias.ReadOnly = true;
             this.grdFrecuencias.RowTemplate.Height = 25;
-            this.grdFrecuencias.Size = new System.Drawing.Size(195, 354);
+            this.grdFrecuencias.Size = new System.Drawing.Size(195, 430);
             this.grdFrecuencias.TabIndex = 1;
             // 
             // GraficadorExcelObservado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 378);
+            this.ClientSize = new System.Drawing.Size(800, 454);
             this.Controls.Add(this.grdFrecuencias);
             this.Controls.Add(this.pictureBox1);
             this.Name = "GraficadorExcelObservado";
