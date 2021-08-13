@@ -1,5 +1,6 @@
 ﻿using NumerosAleatorios.Generadores;
 using NumerosAleatorios.GeneradorIntervalos;
+using NumerosAleatorios.Graficador;
 using NumerosAleatorios.Soporte;
 using System;
 using System.Collections.Generic;
@@ -71,7 +72,11 @@ namespace NumerosAleatorios
 
         private void btnGraficar_Click(object sender, EventArgs e)
         {
-
+            GraficadorExcelObservado graficador = new GraficadorExcelObservado();
+            graficador.frecuenciaObservada = frecuenciasObservadas;
+            graficador.inicioIntervalos = this.inicioIntervalos;
+            graficador.finIntervalos = this.finIntervalos;
+            graficador.Show();
         }
 
         private void PantallaChiCuadrado_Load(object sender, EventArgs e)
