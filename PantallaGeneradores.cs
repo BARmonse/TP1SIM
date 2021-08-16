@@ -21,6 +21,8 @@ namespace NumerosAleatorios
         int g;
         int m;
         int c;
+
+        int indice;
     
         int mostrarDesde;
         int mostrarHasta;
@@ -55,6 +57,7 @@ namespace NumerosAleatorios
             a = int.Parse(txtA.Text);
             m = int.Parse(txtM.Text);
             cantidad = int.Parse(txtCantidad.Text);
+            indice = cantidad - 1; 
      
             mostrarDesde = 0;
             mostrarHasta = 20;
@@ -228,6 +231,11 @@ namespace NumerosAleatorios
             grdResultados.DataSource = null;
             grdResultados.DataSource = dt;
             grdResultados.CurrentCell = grdResultados.Rows[dt.Rows.Count - 1].Cells[0];
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

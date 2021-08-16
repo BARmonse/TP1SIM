@@ -52,6 +52,7 @@ namespace NumerosAleatorios
             this.grdResultados = new System.Windows.Forms.DataGridView();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnListar = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdResultados)).BeginInit();
@@ -246,9 +247,9 @@ namespace NumerosAleatorios
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(523, 185);
+            this.button1.Location = new System.Drawing.Point(22, 403);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(125, 212);
+            this.button1.Size = new System.Drawing.Size(495, 56);
             this.button1.TabIndex = 3;
             this.button1.Text = "Generar";
             this.button1.UseVisualStyleBackColor = true;
@@ -262,40 +263,52 @@ namespace NumerosAleatorios
             this.grdResultados.AllowUserToResizeRows = false;
             this.grdResultados.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.grdResultados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grdResultados.Location = new System.Drawing.Point(654, 185);
+            this.grdResultados.Location = new System.Drawing.Point(523, 185);
             this.grdResultados.Name = "grdResultados";
             this.grdResultados.ReadOnly = true;
             this.grdResultados.RowTemplate.Height = 25;
-            this.grdResultados.Size = new System.Drawing.Size(296, 212);
+            this.grdResultados.Size = new System.Drawing.Size(427, 212);
             this.grdResultados.TabIndex = 4;
             // 
             // btnAgregar
             // 
             this.btnAgregar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnAgregar.Location = new System.Drawing.Point(654, 403);
+            this.btnAgregar.Location = new System.Drawing.Point(523, 403);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(125, 33);
+            this.btnAgregar.Size = new System.Drawing.Size(125, 56);
             this.btnAgregar.TabIndex = 5;
-            this.btnAgregar.Text = "Agregar Filas";
+            this.btnAgregar.Text = "Mostrar 20 siguientes";
             this.btnAgregar.UseVisualStyleBackColor = true;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // btnListar
             // 
             this.btnListar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnListar.Location = new System.Drawing.Point(785, 403);
+            this.btnListar.Location = new System.Drawing.Point(654, 403);
             this.btnListar.Name = "btnListar";
-            this.btnListar.Size = new System.Drawing.Size(165, 33);
+            this.btnListar.Size = new System.Drawing.Size(132, 56);
             this.btnListar.TabIndex = 6;
             this.btnListar.Text = "Listar hasta el final";
             this.btnListar.UseVisualStyleBackColor = true;
             this.btnListar.Click += new System.EventHandler(this.btnListar_Click);
             // 
-            // Form1
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button2.Location = new System.Drawing.Point(792, 403);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(158, 56);
+            this.button2.TabIndex = 7;
+            this.button2.Text = "Volver al Menú";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // PantallaGeneradores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(984, 461);
+            this.ClientSize = new System.Drawing.Size(984, 463);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.btnListar);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.grdResultados);
@@ -303,7 +316,7 @@ namespace NumerosAleatorios
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
-            this.Name = "Form1";
+            this.Name = "PantallaGeneradores";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Generadores";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -342,6 +355,7 @@ namespace NumerosAleatorios
         private System.Windows.Forms.DataGridView grdResultados;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Button btnListar;
+        private System.Windows.Forms.Button button2;
     }
 }
 

@@ -73,7 +73,7 @@ namespace NumerosAleatorios.Graficador
             Excel.Range chartRange;
 
             Excel.ChartObjects xlCharts = (Excel.ChartObjects)xlWorkSheet.ChartObjects(Type.Missing);
-            Excel.ChartObject myChart = (Excel.ChartObject)xlCharts.Add(240, 120, 340, 290);
+            Excel.ChartObject myChart = xlCharts.Add(240, 120, 340, 290);
             Excel.Chart chartPage = myChart.Chart;
 
 

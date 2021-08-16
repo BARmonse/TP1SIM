@@ -26,8 +26,8 @@ namespace NumerosAleatorios.Generadores
 
         public GeneradorLenguaje(Truncador truncador)
         {
-            this.truncador = truncador;
-            this.random = new Random();
+             this.truncador = truncador;
+             this.random = new Random();
         }
 
         public double siguienteAleatorio()
