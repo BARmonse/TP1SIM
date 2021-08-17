@@ -81,7 +81,7 @@ namespace NumerosAleatorios.Graficador
             plt.PlotBar(xs, y2, yError, "Esperado", barWidth: .3, xOffset: .2);
             plt.XLabel("Intervalos");
             plt.YLabel("Cantidad");
-
+            plt.Legend(location: Alignment.LowerRight);
             // customize the plot to make it look nicer
             plt.AxisAutoY();
             plt.Grid(false, lineStyle: ScottPlot.LineStyle.Dot);
