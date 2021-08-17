@@ -68,8 +68,12 @@ namespace NumerosAleatorios
             grdAleatorios.Refresh();
             tablaAleatorios.Rows.Clear();
             tomarDatos();
-            if (cantidad <= 0 || cantidadIntervalos <= 0) { MessageBox.Show("El tamaño de la muestra debe ser mayor a 0..."); }
-            generarNumerosAleatorios();
+            if (cantidad <= 0 || cantidadIntervalos <= 0 || semilla <=0 || k <= 0 || g <= 0|| a <=0 || c <=0 || m <= 0) 
+            {
+                MessageBox.Show("Datos inválidos");
+            }
+            else { generarNumerosAleatorios(); }
+            
 
         }
 

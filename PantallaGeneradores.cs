@@ -48,6 +48,7 @@ namespace NumerosAleatorios
 
         private void button1_Click(object sender, EventArgs e)
         {
+            
             grdResultados.DataSource = null;
             grdResultados.Refresh();
             dt.Rows.Clear();
@@ -60,15 +61,22 @@ namespace NumerosAleatorios
             indice = cantidad - 1; 
      
             mostrarDesde = 0;
-            mostrarHasta = 20;
+            mostrarHasta = 19;
 
-            if (rbMixto.Checked)
+            if (semilla <= 0 || k <=0 || g <= 0 || a <= 0 || m <= 0)
             {
-                if (txtC.Text == "") { return; }
-                c = int.Parse(txtC.Text);
-                congruencialMixto();
+                MessageBox.Show("Datos inválidos");
             }
-            else { congruencialMultiplicativo(); }
+            else
+            {
+                if (rbMixto.Checked)
+                {
+                    if (txtC.Text == "") { return; }
+                    c = int.Parse(txtC.Text);
+                    congruencialMixto();
+                }
+                else { congruencialMultiplicativo(); }
+            }
         }
 
         private void congruencialMixto()
