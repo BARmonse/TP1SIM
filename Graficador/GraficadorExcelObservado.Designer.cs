@@ -37,36 +37,34 @@ namespace NumerosAleatorios.Graficador
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(213, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(270, 12);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(575, 430);
+            this.pictureBox1.Size = new System.Drawing.Size(965, 552);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
             // grdFrecuencias
             // 
-            this.grdFrecuencias.AllowUserToAddRows = false;
-            this.grdFrecuencias.AllowUserToDeleteRows = false;
             this.grdFrecuencias.BackgroundColor = System.Drawing.SystemColors.Control;
             this.grdFrecuencias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grdFrecuencias.GridColor = System.Drawing.SystemColors.Control;
             this.grdFrecuencias.Location = new System.Drawing.Point(12, 12);
             this.grdFrecuencias.Name = "grdFrecuencias";
-            this.grdFrecuencias.ReadOnly = true;
             this.grdFrecuencias.RowTemplate.Height = 25;
-            this.grdFrecuencias.Size = new System.Drawing.Size(195, 430);
+            this.grdFrecuencias.Size = new System.Drawing.Size(252, 370);
             this.grdFrecuencias.TabIndex = 1;
             // 
             // GraficadorExcelObservado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 454);
+            this.ClientSize = new System.Drawing.Size(1247, 570);
             this.Controls.Add(this.grdFrecuencias);
             this.Controls.Add(this.pictureBox1);
             this.Name = "GraficadorExcelObservado";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gráfico";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.GraficadorExcelObservado_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdFrecuencias)).EndInit();

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ScottPlot;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,15 +14,10 @@ namespace NumerosAleatorios.Graficador
 {
     public partial class GraficadorExcelObservado : Form
     {
-        Excel.Application xlApp;
-        Excel.Workbook xlWorkBook;
-        Excel.Worksheet xlWorkSheet;
-        object misValue = System.Reflection.Missing.Value;
         public int[] frecuenciaObservada { get; set; }
         public double[] inicioIntervalos { get; set; }
         public double[] finIntervalos { get; set; }
-
-        public int[] valoresDiscretos { get; set; }
+        public int[] frecuenciaEsperada { get; set; }
 
         public string nombre { get; set; }
 
@@ -35,93 +31,74 @@ namespace NumerosAleatorios.Graficador
 
         private void GraficadorExcelObservado_Load(object sender, EventArgs e)
         {
-            xlApp = new Excel.Application();
-            xlWorkBook = xlApp.Workbooks.Add(misValue);
-            xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
-
-            xlWorkSheet.Cells[1, 2] = nombre;
-
             dataTable = new DataTable();
             dataTable.Columns.Add("int.");
             dataTable.Columns.Add("FO");
+            dataTable.Columns.Add("FE");
 
-            int indice = 1;
+            List<double> tempObservada = new List<double>();
+            List<double> tempEsperada = new List<double>();
+            List<string> tempLabels = new List<string>();
+
+            var plt = new Plot(600, 400);
+
 
             for (int i = 0; i < frecuenciaObservada.Length; i++)
             {
-                xlWorkSheet.Cells[i + 2, 2] = frecuenciaObservada[i].ToString();
-
+                List<object> temp = new List<object>();
                 dataRow = dataTable.NewRow();
 
+                tempLabels.Add((i + 1).ToString());
                 if (inicioIntervalos != null)
                 {
-                    dataRow[0] = "[" + inicioIntervalos[i] + ";" + finIntervalos[i] + "]";
-                    xlWorkSheet.Cells[i + 2, 1] = ("[" + inicioIntervalos[i] + ";" + finIntervalos[i] + "]").ToString();
-                }
-                if (valoresDiscretos != null)
-                {
-                    dataRow[0] = valoresDiscretos[i] + ";";
-                    xlWorkSheet.Cells[i + 2, 1] = valoresDiscretos[i].ToString();
+                    string intervalo = "[" + inicioIntervalos[i] + ";" + finIntervalos[i] + "]";
+                    dataRow[0] = intervalo;
                 }
 
-                dataRow[1] = frecuenciaObservada[i];
+                double observado = frecuenciaObservada[i];
+                dataRow[1] = observado;
+                tempObservada.Add(observado);
+
+                if (frecuenciaEsperada != null)
+                {
+                    double esperado = frecuenciaEsperada[i];
+                    dataRow[2] = esperado;
+                    tempEsperada.Add(esperado);
+                }
                 dataTable.Rows.Add(dataRow);
             }
-
             grdFrecuencias.DataSource = dataTable;
 
-            Excel.Range chartRange;
+            // generate random data to plot
+            int pointCount = frecuenciaObservada.Length;
+            double[] xs = DataGen.Consecutive(pointCount);
+            double[] y1 = tempObservada.ToArray();
+            double[] y2 = tempEsperada.ToArray();
+            double[] yError = new double[pointCount];
 
-            Excel.ChartObjects xlCharts = (Excel.ChartObjects)xlWorkSheet.ChartObjects(Type.Missing);
-            Excel.ChartObject myChart = xlCharts.Add(240, 120, 340, 290);
-            Excel.Chart chartPage = myChart.Chart;
+            // make the bar plot
+            plt.PlotBar(xs, y1, yError, "Observado", barWidth: .3, xOffset: -.2);
+            plt.PlotBar(xs, y2, yError, "Esperado", barWidth: .3, xOffset: .2);
+            plt.XLabel("Intervalos");
+            plt.YLabel("Cantidad");
 
+            // customize the plot to make it look nicer
+            plt.AxisAutoY();
+            plt.Grid(false, lineStyle: ScottPlot.LineStyle.Dot);
 
-            chartRange = xlWorkSheet.get_Range("A1", "b" + (frecuenciaObservada.Length + 1));
-            chartPage.SetSourceData(chartRange, misValue);
-            chartPage.ChartType = Excel.XlChartType.xlColumnClustered;
-            chartPage.Legend.LegendEntries(chartPage.Legend.LegendEntries().Count).Delete();
+            // apply custom axis tick labels
+            string[] labels = tempLabels.ToArray();
+            plt.XTicks(xs, labels);
 
+            //string imagePath = "C:\\\\Users\\" + Environment.UserName.ToString() + "\\histograma" + ".png";
+            //plt.SaveFig(imagePath);
+            //pictureBox1.Image = new Bitmap(imagePath);
 
-            Excel.ChartGroup group = chartPage.ChartGroups(1);
-            group.GapWidth = 0;
-            group.Overlap = 0;
-
-            Excel.Series series = (Excel.Series)chartPage.SeriesCollection(1);
-            series.Border.Color = (int)Excel.XlRgbColor.rgbBlack;
-
-            //export chart as picture file;
             Random random = new Random();
-            string time = random.Next().ToString();
-            chartPage.Export(@"C:\\Users\" + Environment.UserName.ToString() + "\\histograma" + time + ".png", "PNG", misValue);
-            pictureBox1.Image = new Bitmap(@"C:\\Users\" + Environment.UserName.ToString() + "\\histograma" + time + ".png");
-
-
-            // PARA GUARDAR EL EXCEL
-            //xlWorkBook.SaveAs("histograma", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
-            xlWorkBook.Close(false, misValue, misValue);
-            xlApp.Quit();
-
-            releaseObject(xlWorkSheet);
-            releaseObject(xlWorkBook);
-            releaseObject(xlApp);
-        }
-        private void releaseObject(object obj)
-        {
-            try
-            {
-                System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);
-                obj = null;
-            }
-            catch (Exception ex)
-            {
-                obj = null;
-                MessageBox.Show("Exception Occured while releasing object " + ex.ToString());
-            }
-            finally
-            {
-                GC.Collect();
-            }
+            string rand = random.Next().ToString();
+            string imagePath = "C:\\\\Users\\" + Environment.UserName.ToString() + "\\histograma" + rand + ".png";
+            plt.SaveFig(imagePath);
+            pictureBox1.Image = new Bitmap(imagePath);
         }
     }
 }
