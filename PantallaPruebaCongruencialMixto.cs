@@ -111,11 +111,6 @@ namespace NumerosAleatorios
             cantidadIntervalos = int.Parse(cantIntervalos.Text);
         }
 
-
-
-
-
-
         private void actualizarK()
         {
             a = int.Parse(txtA.Text);
