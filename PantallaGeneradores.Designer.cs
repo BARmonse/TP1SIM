@@ -34,8 +34,6 @@ namespace NumerosAleatorios
             this.rbMultiplicativo = new System.Windows.Forms.RadioButton();
             this.rbMixto = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -43,9 +41,7 @@ namespace NumerosAleatorios
             this.label2 = new System.Windows.Forms.Label();
             this.txtCantidad = new System.Windows.Forms.TextBox();
             this.txtM = new System.Windows.Forms.TextBox();
-            this.txtG = new System.Windows.Forms.TextBox();
             this.txtA = new System.Windows.Forms.TextBox();
-            this.txtK = new System.Windows.Forms.TextBox();
             this.txtC = new System.Windows.Forms.TextBox();
             this.txtSemilla = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -53,6 +49,8 @@ namespace NumerosAleatorios
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnListar = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.btnListarHasta = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdResultados)).BeginInit();
@@ -105,7 +103,7 @@ namespace NumerosAleatorios
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.label8);
+            this.groupBox2.Controls.Add(this.btnListarHasta);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.label5);
@@ -114,9 +112,7 @@ namespace NumerosAleatorios
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.txtCantidad);
             this.groupBox2.Controls.Add(this.txtM);
-            this.groupBox2.Controls.Add(this.txtG);
             this.groupBox2.Controls.Add(this.txtA);
-            this.groupBox2.Controls.Add(this.txtK);
             this.groupBox2.Controls.Add(this.txtC);
             this.groupBox2.Controls.Add(this.txtSemilla);
             this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -126,24 +122,6 @@ namespace NumerosAleatorios
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Parámetros";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(60, 159);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(24, 21);
-            this.label8.TabIndex = 13;
-            this.label8.Text = "G:";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(61, 124);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(22, 21);
-            this.label7.TabIndex = 12;
-            this.label7.Text = "K:";
             // 
             // label6
             // 
@@ -184,7 +162,7 @@ namespace NumerosAleatorios
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(84, 36);
+            this.label2.Location = new System.Drawing.Point(20, 36);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(75, 21);
             this.label2.TabIndex = 7;
@@ -193,7 +171,7 @@ namespace NumerosAleatorios
             // txtCantidad
             // 
             this.txtCantidad.Enabled = false;
-            this.txtCantidad.Location = new System.Drawing.Point(174, 28);
+            this.txtCantidad.Location = new System.Drawing.Point(101, 33);
             this.txtCantidad.Name = "txtCantidad";
             this.txtCantidad.Size = new System.Drawing.Size(141, 29);
             this.txtCantidad.TabIndex = 6;
@@ -205,15 +183,6 @@ namespace NumerosAleatorios
             this.txtM.Name = "txtM";
             this.txtM.Size = new System.Drawing.Size(141, 29);
             this.txtM.TabIndex = 5;
-            this.txtM.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtM_KeyDown);
-            // 
-            // txtG
-            // 
-            this.txtG.Location = new System.Drawing.Point(90, 151);
-            this.txtG.Name = "txtG";
-            this.txtG.Size = new System.Drawing.Size(141, 29);
-            this.txtG.TabIndex = 4;
-            this.txtG.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtG_KeyDown);
             // 
             // txtA
             // 
@@ -221,15 +190,6 @@ namespace NumerosAleatorios
             this.txtA.Name = "txtA";
             this.txtA.Size = new System.Drawing.Size(141, 29);
             this.txtA.TabIndex = 3;
-            this.txtA.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtA_KeyDown);
-            // 
-            // txtK
-            // 
-            this.txtK.Location = new System.Drawing.Point(90, 116);
-            this.txtK.Name = "txtK";
-            this.txtK.Size = new System.Drawing.Size(141, 29);
-            this.txtK.TabIndex = 2;
-            this.txtK.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtK_KeyDown);
             // 
             // txtC
             // 
@@ -240,7 +200,7 @@ namespace NumerosAleatorios
             // 
             // txtSemilla
             // 
-            this.txtSemilla.Location = new System.Drawing.Point(90, 81);
+            this.txtSemilla.Location = new System.Drawing.Point(101, 86);
             this.txtSemilla.Name = "txtSemilla";
             this.txtSemilla.Size = new System.Drawing.Size(141, 29);
             this.txtSemilla.TabIndex = 0;
@@ -304,6 +264,22 @@ namespace NumerosAleatorios
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(263, 36);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(52, 21);
+            this.label7.TabIndex = 12;
+            this.label7.Text = "Hasta:";
+            // 
+            // btnListarHasta
+            // 
+            this.btnListarHasta.Location = new System.Drawing.Point(321, 33);
+            this.btnListarHasta.Name = "btnListarHasta";
+            this.btnListarHasta.Size = new System.Drawing.Size(141, 29);
+            this.btnListarHasta.TabIndex = 13;
+            // 
             // PantallaGeneradores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -338,8 +314,6 @@ namespace NumerosAleatorios
         private System.Windows.Forms.RadioButton rbMultiplicativo;
         private System.Windows.Forms.RadioButton rbMixto;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
@@ -347,9 +321,7 @@ namespace NumerosAleatorios
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtCantidad;
         private System.Windows.Forms.TextBox txtM;
-        private System.Windows.Forms.TextBox txtG;
         private System.Windows.Forms.TextBox txtA;
-        private System.Windows.Forms.TextBox txtK;
         private System.Windows.Forms.TextBox txtC;
         private System.Windows.Forms.TextBox txtSemilla;
         private System.Windows.Forms.Button button1;
@@ -357,6 +329,8 @@ namespace NumerosAleatorios
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Button btnListar;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox btnListarHasta;
+        private System.Windows.Forms.Label label7;
     }
 }
 

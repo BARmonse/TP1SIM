@@ -68,7 +68,7 @@ namespace NumerosAleatorios
             grdAleatorios.Refresh();
             tablaAleatorios.Rows.Clear();
             tomarDatos();
-            if (cantidad <= 0 || cantidadIntervalos <= 0 || semilla <=0 || k <= 0 || g <= 0|| a <=0 || c <=0 || m <= 0) 
+            if (cantidad <= 0 || cantidadIntervalos <= 0 || semilla <=0 || a <=0 || c <=0 || m <= 0) 
             {
                 MessageBox.Show("Datos inválidos");
             }
@@ -101,80 +101,12 @@ namespace NumerosAleatorios
         private void tomarDatos()
         {
             semilla = int.Parse(txtSemilla.Text);
-            k = int.Parse(txtK.Text);
-            g = int.Parse(txtG.Text);
             a = int.Parse(txtA.Text);
             c = int.Parse(txtC.Text);
             m = int.Parse(txtM.Text);
             cantidad = int.Parse(cant.Text);
             indice = cantidad - 1;
             cantidadIntervalos = int.Parse(cantIntervalos.Text);
-        }
-
-        private void actualizarK()
-        {
-            a = int.Parse(txtA.Text);
-            k = (a - 1) / 4;
-            txtK.Text = k.ToString();
-        }
-
-        private void actualizarA()
-        {
-            k = int.Parse(txtK.Text);
-            a = 1 + 4 * k;
-            txtA.Text = a.ToString();
-
-        }
-
-        private void actualizarG()
-        {
-            m = int.Parse(txtM.Text);
-            g = (int)Math.Log2(m);
-            txtG.Text = g.ToString();
-        }
-
-        private void actualizarM()
-        {
-            g = int.Parse(txtG.Text);
-            m = (int)Math.Pow(2, g);
-
-            txtM.Text = m.ToString();
-        }
-
-        private void txtK_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyData == Keys.Enter)
-            {
-                actualizarA();
-                actualizarK();
-            }
-        }
-
-        private void txtA_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyData == Keys.Enter)
-            {
-                actualizarK();
-                actualizarA();
-            }
-        }
-
-        private void txtG_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyData == Keys.Enter)
-            {
-                actualizarM();
-                actualizarG();
-            }
-        }
-
-        private void txtM_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyData == Keys.Enter)
-            {
-                actualizarG();
-                actualizarM();
-            }
         }
 
         private void btnPrueba_Click(object sender, EventArgs e)

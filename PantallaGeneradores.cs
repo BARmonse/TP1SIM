@@ -16,9 +16,7 @@ namespace NumerosAleatorios
     {
         int cantidad;
         int semilla;
-        int k;
         int a;
-        int g;
         int m;
         int c;
 
@@ -53,17 +51,15 @@ namespace NumerosAleatorios
             grdResultados.Refresh();
             dt.Rows.Clear();
             semilla = int.Parse(txtSemilla.Text);
-            k = int.Parse(txtK.Text);
-            g = int.Parse(txtG.Text);
             a = int.Parse(txtA.Text);
             m = int.Parse(txtM.Text);
             cantidad = int.Parse(txtCantidad.Text);
             indice = cantidad - 1; 
      
             mostrarDesde = 0;
-            mostrarHasta = 19;
+            mostrarHasta = int.Parse(btnListarHasta.Text);
 
-            if (semilla <= 0 || k <=0 || g <= 0 || a <= 0 || m <= 0)
+            if (semilla <= 0  || a <= 0 || m <= 0)
             {
                 MessageBox.Show("Datos inválidos");
             }
@@ -97,92 +93,8 @@ namespace NumerosAleatorios
             grdResultados.DataSource = temp;
         }
 
-        private void txtK_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyData == Keys.Enter)
-            {
-                actualizarA();
-                actualizarK();
-            }
-        }
-
-
-        private void txtG_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyData == Keys.Enter)
-            {
-                actualizarM();
-                actualizarG();
-            }
-        }
-
-        private void txtM_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyData == Keys.Enter)
-            {
-                actualizarG();
-                actualizarM();
-            }
-        }
-
-        private void txtA_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyData == Keys.Enter)
-            {
-                actualizarK();
-                actualizarA();
-            }
-        }
-
-        private void actualizarK()
-        {
-            a = int.Parse(txtA.Text);
-            if (rbMixto.Checked)
-            {
-                k = (a - 1) / 4;
-                txtK.Text = k.ToString();
-            }
-            else
-            {
-                k = (a - 3) / 8;
-                txtK.Text = k.ToString();
-            }
-        }
-
-        private void actualizarA()
-        {
-            k = int.Parse(txtK.Text);
-            if (rbMixto.Checked)
-            {
-                a = 1 + 4 * k;
-                txtA.Text = a.ToString();
-            }
-            else
-            {
-                a = 3 + 8 * k;
-                txtA.Text = a.ToString();
-            }
-        }
-
-        private void actualizarG()
-        {
-            m = int.Parse(txtM.Text);
-            g = (int)Math.Log2(m);
-            txtG.Text = g.ToString();
-        }
-        
-        private void actualizarM()
-        {
-            g = int.Parse(txtG.Text);
-            m = (int)Math.Pow(2, g);
-
-            txtM.Text = m.ToString();
-        }
-
         private void limpiarCampos()
         {
-            txtG.Text = "";
-            txtK.Text = "";
             txtC.Text = "";
             txtA.Text = "";
             txtM.Text = "";

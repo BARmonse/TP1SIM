@@ -41,20 +41,16 @@ namespace NumerosAleatorios
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtM = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txtA = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.txtC = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtG = new System.Windows.Forms.TextBox();
             this.cantIntervalos = new System.Windows.Forms.TextBox();
             this.cant = new System.Windows.Forms.TextBox();
             this.txtSemilla = new System.Windows.Forms.TextBox();
-            this.txtK = new System.Windows.Forms.TextBox();
             this.grdAleatorios = new System.Windows.Forms.DataGridView();
             this.grdPrueba = new System.Windows.Forms.DataGridView();
             this.lblResultado = new System.Windows.Forms.Label();
@@ -158,20 +154,16 @@ namespace NumerosAleatorios
             // 
             this.groupBox1.Controls.Add(this.txtM);
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.txtA);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.txtC);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.txtG);
             this.groupBox1.Controls.Add(this.cantIntervalos);
             this.groupBox1.Controls.Add(this.cant);
             this.groupBox1.Controls.Add(this.txtSemilla);
-            this.groupBox1.Controls.Add(this.txtK);
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
@@ -182,34 +174,24 @@ namespace NumerosAleatorios
             // 
             // txtM
             // 
-            this.txtM.Location = new System.Drawing.Point(99, 280);
+            this.txtM.Location = new System.Drawing.Point(99, 210);
             this.txtM.Name = "txtM";
             this.txtM.Size = new System.Drawing.Size(101, 29);
             this.txtM.TabIndex = 19;
-            this.txtM.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtM_KeyDown);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(70, 283);
+            this.label5.Location = new System.Drawing.Point(66, 213);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(27, 21);
             this.label5.TabIndex = 22;
             this.label5.Text = "M:";
             // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(71, 177);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(24, 21);
-            this.label8.TabIndex = 25;
-            this.label8.Text = "G:";
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(70, 246);
+            this.label4.Location = new System.Drawing.Point(70, 178);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(23, 21);
             this.label4.TabIndex = 21;
@@ -217,11 +199,10 @@ namespace NumerosAleatorios
             // 
             // txtA
             // 
-            this.txtA.Location = new System.Drawing.Point(99, 244);
+            this.txtA.Location = new System.Drawing.Point(99, 175);
             this.txtA.Name = "txtA";
             this.txtA.Size = new System.Drawing.Size(101, 29);
             this.txtA.TabIndex = 17;
-            this.txtA.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtA_KeyDown);
             // 
             // label2
             // 
@@ -235,24 +216,15 @@ namespace NumerosAleatorios
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(70, 213);
+            this.label3.Location = new System.Drawing.Point(70, 143);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(23, 21);
             this.label3.TabIndex = 20;
             this.label3.Text = "C:";
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(71, 142);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(22, 21);
-            this.label7.TabIndex = 24;
-            this.label7.Text = "K:";
-            // 
             // txtC
             // 
-            this.txtC.Location = new System.Drawing.Point(99, 209);
+            this.txtC.Location = new System.Drawing.Point(99, 140);
             this.txtC.Name = "txtC";
             this.txtC.Size = new System.Drawing.Size(101, 29);
             this.txtC.TabIndex = 15;
@@ -275,14 +247,6 @@ namespace NumerosAleatorios
             this.label6.TabIndex = 23;
             this.label6.Text = "Semilla:";
             // 
-            // txtG
-            // 
-            this.txtG.Location = new System.Drawing.Point(99, 174);
-            this.txtG.Name = "txtG";
-            this.txtG.Size = new System.Drawing.Size(101, 29);
-            this.txtG.TabIndex = 18;
-            this.txtG.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtG_KeyDown);
-            // 
             // cantIntervalos
             // 
             this.cantIntervalos.Location = new System.Drawing.Point(99, 69);
@@ -303,14 +267,6 @@ namespace NumerosAleatorios
             this.txtSemilla.Name = "txtSemilla";
             this.txtSemilla.Size = new System.Drawing.Size(101, 29);
             this.txtSemilla.TabIndex = 14;
-            // 
-            // txtK
-            // 
-            this.txtK.Location = new System.Drawing.Point(99, 139);
-            this.txtK.Name = "txtK";
-            this.txtK.Size = new System.Drawing.Size(101, 29);
-            this.txtK.TabIndex = 16;
-            this.txtK.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtK_KeyDown);
             // 
             // grdAleatorios
             // 
@@ -391,15 +347,11 @@ namespace NumerosAleatorios
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox cantIntervalos;
         private System.Windows.Forms.TextBox cant;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtC;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtG;
         private System.Windows.Forms.TextBox txtSemilla;
-        private System.Windows.Forms.TextBox txtK;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtM;
         private System.Windows.Forms.TextBox txtA;
