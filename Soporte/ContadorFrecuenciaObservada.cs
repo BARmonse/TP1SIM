@@ -34,15 +34,6 @@ namespace NumerosAleatorios.Soporte
                 }
             }
         }
-
-        public void contarFrecuenciaSerie(DataTable numeros)
-        {
-            for (int i = 0; i < numeros.Rows.Count; i++)
-            {
-                double aleatorio = double.Parse(numeros.Rows[i][1].ToString());
-                contarNumero(aleatorio);
-            }
-        }
         public int[] obtenerFrecuencias()
         {
             return frecuenciaObservada;

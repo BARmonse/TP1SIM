@@ -89,7 +89,7 @@ namespace NumerosAleatorios
             generador = new GeneradorCongruencialMultiplicativo(dt, truncador, semilla, a, m);
             generador.generarSerie(cantidad);
             temp = new DataTable();
-            temp = dt.AsEnumerable().Where((row, index) => index >= mostrarDesde && index <= mostrarHasta).CopyToDataTable();
+            temp = dt.AsEnumerable().Where((row, index) => index >= mostrarDesde && index < mostrarHasta).CopyToDataTable();
             grdResultados.DataSource = temp;
         }
 
